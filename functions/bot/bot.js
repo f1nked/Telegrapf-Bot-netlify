@@ -1,6 +1,11 @@
 const { Telegraf } = require("telegraf");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
+const messages = [
+  "I thought you were smarter than a bot, but here we are.",
+  "Pressing that blue button on the left is like finding the secret level in a video game. Try it!",
+];
+
 bot.start((ctx) => {
   console.log("Received /start command");
   try {
@@ -13,7 +18,9 @@ bot.start((ctx) => {
 
 bot.on("message", (ctx) => {
   try {
-    ctx.reply("answer");
+    // Choose a random message from the array
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    ctx.reply(randomMessage);
   } catch (e) {
     console.error("error in message handler:", e);
     // You might want to handle errors more gracefully here
