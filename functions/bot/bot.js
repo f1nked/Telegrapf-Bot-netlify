@@ -11,6 +11,15 @@ bot.start((ctx) => {
   }
 });
 
+bot.on("message", (ctx) => {
+  try {
+    ctx.reply("answer");
+  } catch (e) {
+    console.error("error in message handler:", e);
+    // You might want to handle errors more gracefully here
+  }
+});
+
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
   try {
