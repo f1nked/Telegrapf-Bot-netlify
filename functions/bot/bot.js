@@ -159,11 +159,9 @@ bot.on("message", (ctx) => {
   ctx.reply(randomMessage);
 });
 
-await bot.launch(); // Launch the bot before the handler
-
-exports.handler = async (event) => {
+exports.handler = (event) => {
   try {
-    await bot.handleUpdate(JSON.parse(event.body));
+    bot.handleUpdate(JSON.parse(event.body));
     return { statusCode: 200, body: "" };
   } catch (e) {
     console.error("error in handler:", e);
