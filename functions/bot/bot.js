@@ -170,16 +170,6 @@ exports.handler = async (event) => {
   }
 };
 
-exports.handler = async (event) => {
-  try {
-    const update = JSON.parse(event.body);
-    await bot.processUpdate(update);
-    return { statusCode: 200, body: "" };
-  } catch (e) {
-    console.error("error:", e);
-    return { statusCode: 400, body: "Error processing update" };
-  }
-};
 (async () => {
   try {
     await bot.launch();
