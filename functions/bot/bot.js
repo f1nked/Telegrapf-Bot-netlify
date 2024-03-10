@@ -169,4 +169,22 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
   }
 };
-bot.launch();
+
+exports.handler = async (event) => {
+  try {
+    const update = JSON.parse(event.body);
+    await bot.processUpdate(update);
+    return { statusCode: 200, body: "" };
+  } catch (e) {
+    console.error("error:", e);
+    return { statusCode: 400, body: "Error processing update" };
+  }
+};
+(async () => {
+  try {
+    await bot.launch();
+    console.log("Bot started");
+  } catch (error) {
+    console.error("Error starting bot:", error);
+  }
+})();
