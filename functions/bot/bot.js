@@ -156,7 +156,6 @@ bot.start((ctx) => ctx.replyWithHTML(`<b>Let's go 😈</b>\n\nPlease press the b
 
 bot.on("message", (ctx) => {
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-
   ctx.reply(randomMessage);
 });
 
@@ -170,4 +169,4 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
   }
 };
-//bot.launch();
+bot.launch();
