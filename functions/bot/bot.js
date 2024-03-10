@@ -159,7 +159,8 @@ bot.on("message", (ctx) => {
   ctx.reply(randomMessage);
 });
 
-// AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
+await bot.launch(); // Launch the bot before the handler
+
 exports.handler = async (event) => {
   try {
     await bot.handleUpdate(JSON.parse(event.body));
